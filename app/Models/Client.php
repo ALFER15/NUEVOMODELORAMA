@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
+    protected $guarded=[];
+    //protected $fillable = [];
+
+    public function tickets(){
+        return $this->hasMany(Ticket::class);
+    }
 }
