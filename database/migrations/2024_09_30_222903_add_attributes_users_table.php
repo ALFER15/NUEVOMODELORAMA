@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->longText('address')->nullable();
-            $table->date('hire')->nullable();
-            $table->date('end');    
+            $table->longText('address')->nullable()->default(null);
+            $table->date('hire')->nullable()->default(null);
+            $table->date('end')->nullable()->default(null);    
 
         });
     }
@@ -26,9 +26,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            $table->dropColumn('phone');
-            $table->dropColumn('salary');
-            $table->dropColumn('email');
+      
             $table->dropColumn('address');
             $table->dropColumn('hire');
             $table->dropColumn('end');
