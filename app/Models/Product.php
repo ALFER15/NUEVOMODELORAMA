@@ -13,11 +13,11 @@ class Product extends Model
 
 //relacion uno a muchos inversa
     public function category(){
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 //relacion uno a muchos inversa
     public function supplier(){
-        return $this->hasMany(Supplier::class);
+        return $this->belongsTo(Supplier::class);
     }
 //relacion muchos a muchos
     public function tickets (){
