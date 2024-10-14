@@ -1,4 +1,6 @@
 <?php
+
+use App\Livewire\Catalogo\CreateCategory;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+   /* route::get('/dashboard', CreateCategory::class)->name('dashboard');*/
 });
 
 Route::get('/data',function(){
