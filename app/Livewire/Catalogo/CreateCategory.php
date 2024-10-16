@@ -7,14 +7,16 @@ use Livewire\Component;
 
 class CreateCategory extends Component
 {
-        public $cat;
+        public $categories;
         public $name;
-        public $title;
         public $description;
 
-    public function mount (){}
+    /*public function mount (){
+        $this->categories = Category::all();
+    }*/
     public function render()
     {
+        $this->categories = Category::all();
         return view('livewire.catalogo.create-category');
     }
     public function enviar()
@@ -23,5 +25,6 @@ class CreateCategory extends Component
        $category->name = $this->name;
        $category->description = $this->description;
        $category->save();
+       $this->reset(['name','description']);
    }
 }
