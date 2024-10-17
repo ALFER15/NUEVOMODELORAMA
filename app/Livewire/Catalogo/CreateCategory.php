@@ -27,4 +27,7 @@ class CreateCategory extends Component
        $category->save();
        $this->reset(['name','description']);
    }
+   public function eliminar (Category $category){
+    $category->delete();
+    }
 }
