@@ -1,9 +1,9 @@
 <div>
-    <span>Agregar branch nuevo</span>
+    <span>Agregar supplier nuevo</span>
     <div class ="ml2 mr-4 mb-4 mt-4">
         <form class="max-w-sm mx-auto"wire:submit='enviar'>
-            <x-label for="rfc" value="RFC"/>
-            <x-input name="rfc" wire:model='rfc'/>
+
+         
 
             <x-label for="name" value="Nombre"/>
             <x-input name="name" wire:model='name'/>
@@ -14,9 +14,11 @@
             <x-label for="email" value="Email"/>
             <x-input name="emai" wire:model='email'/>
             
+            <x-label for="manager_name" value="Nombre del representante"/>
+            <x-input name="manager_name" wire:model='manager_name'/>
 
-            <x-input name="addres"/>
-            <textarea id="address" name="address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Direccion"></textarea>
+            <x-label for="address" value="Direccion"/>
+            <textarea id="Direccion" name="address" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Direccion"></textarea>
            
             <x-label name="rfc" value="RFC"/>
             <x-input name="rfc" wire:model='rfc'/><br>
@@ -74,6 +76,10 @@
                 </td>
                 <td class="px-6 py-4">
                     {{ $supplier->address }}
+                </td>
+                <td>
+                    <x-button class=" bg-green-600" wire:click='editar({{ $supplier->id }})'>Editar</x-button>
+                   <x-danger-button  wire:click='eliminar({{ $supplier->id }})'>Eliminar</x-danger-button>
                 </td>
             </tr>
             @endforeach

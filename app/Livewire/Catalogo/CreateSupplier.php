@@ -13,7 +13,10 @@ class CreateSupplier extends Component
 
     public function render()
     {
+        $this->suppliers = Supplier::all();
+
         return view('livewire.catalogo.create-supplier');
+
     }
     
     public function enviar(){
@@ -28,4 +31,7 @@ class CreateSupplier extends Component
         $this->reset(['name','phone','address','rfc','email','manager_name']);
     }
     
+    public function eliminar (Supplier $supplier){
+        $supplier->delete();
+        }
 }

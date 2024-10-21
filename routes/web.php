@@ -13,15 +13,19 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+
      Route::get('/dashboard', function () {
          return view('dashboard');
      })->name('dashboard');
+
      Route::get('/branch', function () {
          return view('branch');
-     })->name('dashboard');
-     Route::get('/suppliers', function () {
-         return view('suppliers');
-     })->name('dashboard');
+     })->name('branch');
+
+     Route::get('/supplier', function () {
+         return view('supplier');
+     })->name('supplier');
+     
     //Route::get('/dashboard',CreateCategory::class)->name('dashboard');
 });
 /*Route::get('/data',function(){

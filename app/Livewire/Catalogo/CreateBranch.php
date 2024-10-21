@@ -25,5 +25,8 @@ class CreateBranch extends Component
         $branch->save();
         $this->reset(['name','phone','address','rfc']);
     }
+    public function eliminar (Branch $branch){
+        $branch->delete();
+        }
 
 }

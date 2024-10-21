@@ -49,6 +49,10 @@
                 <td class="px-6 py-4">
                     {{ $branch->rfc }}
                 </td>
+                <td>
+                    <x-button class=" bg-green-600" wire:click='editar({{ $category->id }})'>Editar</x-button>
+                   <x-danger-button  wire:click='eliminar({{ $category->id }})'>Eliminar</x-danger-button>
+                </td>
             </tr>
             @endforeach
 
