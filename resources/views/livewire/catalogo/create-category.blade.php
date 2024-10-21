@@ -48,8 +48,8 @@
                     {{ $category->created_at }}
                 </td>
                 <td class="px-6 py-4">
-                   <x-button class=" bg-green-600" wire:click='editar({{ $category->id }})'>Editar</x-button>
-                   <x-danger-button  wire:click='eliminar({{ $category->id }})'>Eliminar</x-danger-button>
+                    <x-button class=" bg-green-600 dark:bg-green-600" wire:click='editar({{ $category->id }})'>Editar</x-button>
+                    <x-danger-button class="" wire:click='eliminar({{ $category }})'>Eliminar</x-danger-button>
                 </td>
             </tr>
             @endforeach
@@ -57,5 +57,21 @@
         </tbody>
     </table>
 </div>
-
-</div>
+@if ($mEdit)
+    <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
+        <div class="py-12">
+            <div class="bg-white shadow rounded-lg p-6">
+                <form class="max-w-lg mx-auto" wire:submit='update'>
+                    <div class="mb-4"><span>Editar categoria:</span></div>
+                    <x-label class="w-full " for="name" value="Nombre de la categoría"/>
+                    <x-input class="w-full " name="name" wire:model='categoryEdit.name'/>
+                    <x-label class="w-full " for="description" value="Nombre de la descripción" />
+                    <x-input class="w-full " name="description" wire:model='categoryEdit.description' /><br>
+                    <x-danger-button class="mt-2" wire:click="set('mEdit', false)">Cancelar</x-danger-button>
+                    <x-button class="mt-2">Actualizar</x-button>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endif
+</div> 

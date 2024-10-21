@@ -7,27 +7,64 @@ use Livewire\Component;
 
 class CreateCategory extends Component
 {
-        public $categories;
-        public $name;
-        public $description;
+    public $categories;
+    public $name;
+    public $description;
+    public $idEditable;
+    
+    
+    public $mEdit = false;
+    public $categoryEdit = [
+        'id' => '',
+        'name' => '',
+        'description'=>''];
 
-    /*public function mount (){
-        $this->categories = Category::all();
-    }*/
+    public function mount (){
+       /* $this -> name = $categories->name;
+        $this -> description = $categories->description;
+        //dd($cat); //SIRVE PARA DEBUGEAR LA INFORMACIÓN DE LA VARIABLE PERO NO GUARDA LA INFORMACIÓN, FUNCIONA COMO EL CONSOLE LOG DE JS*/
+        //$this -> categories = Category::all();
+
+    }//EJECUTA ALGUNAS COSAS ANTES DE RENDERIZAR
+    
     public function render()
     {
-        $this->categories = Category::all();
+        $this -> categories = Category::all();
         return view('livewire.catalogo.create-category');
+    }//RENDERIZA LA VISTA COMPLETA PARA PODER REDIBUJAR LOS COMPONENTES DE LA PÁGINA
+    public function enviar(){
+       /* $cat = Category::find($this->title);
+        $this -> name = $cat->name;
+        $this -> description = $cat->description;*/
+        $category = new Category();
+        $category->name = $this->name;
+        $category->description = $this->description;
+        $category->save();
+        $this -> reset(['name', 'description']);
     }
-    public function enviar()
-    {
-       $category = new Category();
-       $category->name = $this->name;
-       $category->description = $this->description;
-       $category->save();
-       $this->reset(['name','description']);
-   }
-   public function eliminar (Category $category){
-    $category->delete();
-    }
+    public function editar($categoryID){
+        $this->mEdit = true;
+        $categoryEditable = Category::find($categoryID);
+        $this->idEditable = $categoryEditable->id;
+        $this->categoryEdit['name'] = $categoryEditable->name;
+        $this->categoryEdit['description'] = $categoryEditable->description;}
+
+        public function update(){
+            $category=Category::find($this->idEditable);
+            $category->update([
+                'name'=> $this->categoryEdit['name'],
+                'description'=> $this->categoryEdit['description'],
+
+            ]);
+            $this->reset([
+                'categoryEdit',
+                'idEditable',
+                'mEdit'
+
+            ]);
+
+        }
+    
+        public function delete(Category $category){
+        $category -> delete();}
 }
