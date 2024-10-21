@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Branch;
+namespace App\Livewire\Catalogo;
 
 use App\Models\Branch;
 use Livewire\Component;
