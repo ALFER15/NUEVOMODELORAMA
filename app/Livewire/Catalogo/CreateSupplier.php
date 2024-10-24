@@ -10,6 +10,17 @@ class CreateSupplier extends Component
 
     public $name, $phone, $address, $rfc, $email, $manager_name;
     public $suppliers;
+    public $idEditable;
+
+    public $mEdit = false;
+    public $supplierEdit = [
+        'id' => '',
+        'name' => '',
+        'phone' => '',
+        'address' => '',
+        'email' => '',
+        'manager_name' => '',
+        'rfc' => ''];
 
     public function render()
     {
@@ -31,6 +42,35 @@ class CreateSupplier extends Component
         $this->reset(['name','phone','address','rfc','email','manager_name']);
     }
     
+    public function editar($supplierID){
+        $this->mEdit = true;
+        $supplierEditable = Supplier::find($supplierID);
+        $this->idEditable = $supplierEditable->id;
+        $this->supplierEdit['name'] = $supplierEditable->name;
+        $this->supplierEdit['phone'] = $supplierEditable->phone;
+        $this->supplierEdit['address'] = $supplierEditable->address;
+        $this->supplierEdit['rfc'] = $supplierEditable->rfc;
+        $this->supplierEdit['email'] = $supplierEditable->email;
+        $this->supplierEdit['manager_name'] = $supplierEditable->manager_name;
+    }
+
+public function update() {
+    $supplier = Supplier::find($this->idEditable);
+    $supplier->update([
+        'name' => $this->supplierEdit['name'],
+        'phone' => $this->supplierEdit['phone'],
+        'address' => $this->supplierEdit['address'],
+        'rfc' => $this->supplierEdit['rfc'],
+        'email' => $this->supplierEdit['email'],
+        'manager_name' => $this->supplierEdit['manager_name'],
+    ]);
+    $this->reset([
+        'supplierEdit',
+        'idEditable',
+        'mEdit'
+    ]);
+}
+
     public function eliminar (Supplier $supplier){
         $supplier->delete();
         }
