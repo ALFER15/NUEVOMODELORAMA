@@ -35,7 +35,7 @@
     <div class="m-4">
         <div class="flex justify-end items-center space-x-4">
             <x-input name="search-supplier" placeholder="Buscar supplier" wire:model.live="searchSup" />
-            <x-button wire:click="$set('mCreate', true)">Agregar supplier</x-button>
+            <x-button wire:click="$set('mCreate', true)">Agregar proveedor</x-button>
         </div>
     </div>
 

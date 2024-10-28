@@ -82,6 +82,12 @@ class CreateCategory extends Component
             ]);
         }
         
+        public function updated($propertyName)
+        {
+            if ($propertyName === 'searchCat') {
+                $this->resetPage();}
+            }
+    
         public function delete(Category $category){
         $category -> delete();}
 }

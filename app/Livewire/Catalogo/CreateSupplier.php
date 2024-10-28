@@ -92,6 +92,12 @@ class CreateSupplier extends Component
         ]);
     }
 
+    public function updated($propertyName)
+    {
+        if ($propertyName === 'searchSup') {
+            $this->resetPage();}
+        }
+
     public function eliminar (Supplier $supplier){
         $supplier->delete();
     }

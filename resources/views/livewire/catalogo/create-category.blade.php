@@ -1,7 +1,8 @@
 <div>
     @if ($mCreate)
-    <div class="bg-gray-800 bg-opacity-25 fixed inset-0 flex justify-center items-center z-50">
-        <div class="bg-white shadow-lg rounded-lg p-6 max-w-md mx-auto">
+    <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
+        <div class="py-12">
+            
             <form wire:submit='enviar'>
                 <div class="mb-4 text-center font-bold text-lg"><span>Crear nueva categoría</span></div>
                 <div class="mb-4">
