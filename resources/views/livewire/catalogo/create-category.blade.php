@@ -48,7 +48,7 @@
                 <td class="px-6 py-4 text-gray-900 dark:text-gray-200">{{ $category->created_at }}</td>
                 <td class="px-6 py-4 flex justify-center items-center space-x-2">
                     <x-border-button wire:click='editar({{ $category->id }})'>Editar</x-border-button>
-                    <x-danger-button wire:click='eliminar({{ $category->id }})'>Eliminar</x-danger-button>
+                    <x-danger-button wire:click='delete({{ $category->id }})'>Eliminar</x-danger-button>
                 </td>
             </tr>
             @endforeach
