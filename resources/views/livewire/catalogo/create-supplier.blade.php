@@ -50,7 +50,6 @@
                 <th scope="col" class="px-6 py-3">Email</th>
                 <th scope="col" class="px-6 py-3">Representante</th>
                 <th scope="col" class="px-6 py-3">Dirección</th>
-                <th scope="col" class="px-6 py-3">Acciones</th>
             </tr>
         </thead>
         <tbody>
