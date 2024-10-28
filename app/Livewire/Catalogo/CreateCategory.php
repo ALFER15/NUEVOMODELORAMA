@@ -4,16 +4,21 @@ namespace App\Livewire\Catalogo;
 
 use App\Models\Category;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class CreateCategory extends Component
-{
-    public $categories;
+{    
+    use WithPagination;
+
     public $name;
     public $description;
-    public $idEditable;
-    
     
     public $mEdit = false;
+    public $mCreate = false;
+
+    public $searchCat = '';
+
+    public $idEditable;
     public $categoryEdit = [
         'id' => '',
         'name' => '',
@@ -27,11 +32,15 @@ class CreateCategory extends Component
 
     }//EJECUTA ALGUNAS COSAS ANTES DE RENDERIZAR
     
-    public function render()
+    public function render() 
     {
-        $this -> categories = Category::all();
-        return view('livewire.catalogo.create-category');
+        //$this -> categories = Category::all();
+        $categories = Category::where('name', 'like', '%'.$this->searchCat.'%')->
+        orwhere('description', 'like', '%'.$this->searchCat.'%')
+        ->orderBy('id','desc')->paginate(5);
+        return view('livewire.catalogo.create-category', compact('categories'));
     }//RENDERIZA LA VISTA COMPLETA PARA PODER REDIBUJAR LOS COMPONENTES DE LA PÁGINA
+
     public function enviar(){
        /* $cat = Category::find($this->title);
         $this -> name = $cat->name;
@@ -40,7 +49,7 @@ class CreateCategory extends Component
         $category->name = $this->name;
         $category->description = $this->description;
         $category->save();
-        $this -> reset(['name', 'description']);
+        $this -> reset(['name', 'description', 'mCreate']);
     }
     public function editar($categoryID){
         $this->mEdit = true;
@@ -64,7 +73,15 @@ class CreateCategory extends Component
             ]);
 
         }
-    
+
+        public function formCancel(){
+            $this->reset([
+                'mCreate',
+                'name',
+                'description'
+            ]);
+        }
+        
         public function delete(Category $category){
         $category -> delete();}
 }
