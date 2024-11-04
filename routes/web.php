@@ -13,7 +13,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-
      Route::get('/dashboard', function () {
          return view('dashboard');
      })->name('dashboard');
@@ -27,7 +26,7 @@ Route::middleware([
      })->name('supplier');
      
      Route::get('/products', function () {
-        return view('product');
+        return view('create-product');
     })->name('products');
     //Route::get('/dashboard',CreateCategory::class)->name('dashboard');
 });
