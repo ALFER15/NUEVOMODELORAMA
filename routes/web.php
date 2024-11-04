@@ -26,7 +26,7 @@ Route::middleware([
      })->name('supplier');
      
      Route::get('/products', function () {
-        return view('create-product');
+        return view('product');
     })->name('products');
     //Route::get('/dashboard',CreateCategory::class)->name('dashboard');
 });

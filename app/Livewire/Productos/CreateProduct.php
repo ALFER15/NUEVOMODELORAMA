@@ -29,9 +29,7 @@ class CreateProduct extends Component
     public function render()
     {
         // Asegura que se pase la variable $pCreate a la vista
-        return view('livewire.productos.create-product', [
-            'pCreate' => $this->pCreate
-        ]);
+        return view('livewire.productos.create-product');
     }
 
     // Método para enviar el formulario y crear el producto
